@@ -6,7 +6,25 @@ namespace VTT.Data.Entities
 {
     public class Item : EntityBase
     {
-        // --- ATTRIBIUTES ---
+        public Item(
+            Character owner, string name, int quantity, 
+            float weight, int cost, string description, 
+            Item_Type type, Item_Availability availability, 
+            Item_Concealment concealment)
+        {
+            Owner = owner;
+            Name = name;
+            this.quantity = quantity;
+            this.weight = weight;
+            this.cost = cost;
+            this.description = description;
+            Type = type;
+            Availability = availability;
+            this.concealment = concealment;
+        }
+
+        //the character the item belongs to
+        public Character Owner { get; set; }
 
         [StringLength(50)]
         [Display(Name = "Name")]

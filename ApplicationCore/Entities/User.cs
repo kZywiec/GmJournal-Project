@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using VTT.Data;
 
 
@@ -29,9 +29,14 @@ namespace VTT.Data.Entities
         // --- Relationships ---
         [Required]
         public List<World> Worlds { get; set; } = new();
-
+        
+        [HiddenInput]
+        public List<Character> Characters { get; set; } = new();
 
         public void AddWorld(World world)
             => Worlds.Add(world);
+
+        public void AddCharacter(Character character)
+            => Characters.Add(character);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
 using VTT.Data;
 
 namespace VTT.Data.Entities
@@ -43,5 +42,8 @@ namespace VTT.Data.Entities
 
         [HiddenInput]
         public List<User> Users { get; set; } = new();
+
+        [HiddenInput]
+        public List<Character> Characters { get; set; } = new();
     }
 }

@@ -8,13 +8,16 @@ namespace VTT.Data.Entities
 {
     public class Character : EntityBase
     {
-        public Character(string name, string sex, int age,
-                        string race, string social_standing,
-                        string homeland, int intelligence,
-                        int reflex, int dexterity, int body,
-                        int speed, int empathy, int craft,
-                        int will, int luck)
+        public Character(
+            User user, World world, string name, 
+            string sex, int age, string race, 
+            string social_standing, string homeland, 
+            int intelligence, int reflex, int dexterity, 
+            int body, int speed, int empathy, int craft, 
+            int will, int luck)
         {
+            this.Owner = user;
+            this.World = world;
             this.name = name;
             this.sex = sex;
             this.age = age;
@@ -32,11 +35,13 @@ namespace VTT.Data.Entities
             this.luck = luck;
             this.CalculateStats();
         }
+        //the user the character belongs to
+        public User Owner { get; set; }
+
+        //the world the character live in
+        public World World { get; set; }
 
 
-        // ---|*|ATTRIBIUTES|*|---
-
-        //Basic informations
         [Display(Name = "Name")]
         [Required(ErrorMessage = "Name is required")]
         [StringLength(25, ErrorMessage = "{0} cannot be longer than {1} characters")]
@@ -144,8 +149,6 @@ namespace VTT.Data.Entities
 
         [ValidateNever] //!!!
         public List<Item> Items { get; set; } = new();
-
-
 
         public void CalculateStats()
         {
