@@ -1,13 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using ApplicationCore.Models.EntitiesRelations;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-namespace ApplicationCore.Models.Entities
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using VTT.Data;
+
+namespace VTT.Data.Entities
 {
-    public class Character : EntityBaseWithName
+    public class Character : EntityBase
     {
-        public Character(string name, string sex, int age, string race, string social_standing, string homeland, int intelligence, int reflex, int dexterity, int body, int speed, int empathy, int craft, int will, int luck)
+        public Character(string name, string sex, int age,
+                        string race, string social_standing,
+                        string homeland, int intelligence,
+                        int reflex, int dexterity, int body,
+                        int speed, int empathy, int craft,
+                        int will, int luck)
         {
             this.name = name;
             this.sex = sex;
@@ -25,8 +31,6 @@ namespace ApplicationCore.Models.Entities
             this.will = will;
             this.luck = luck;
             this.CalculateStats();
-
-            //User-worlds connection
         }
 
 
@@ -137,16 +141,9 @@ namespace ApplicationCore.Models.Entities
         //[Range(20, 300, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int encumbrance { get; set; }
 
-        // --- Relationships ---
-        [Required]
-        public int Users_Worlds_id { get; set; }
 
-        [ForeignKey("Users_Worlds_id")]
-        [ValidateNever]
-        public User_World Users_Worlds { get; set; }
-
-        [ValidateNever]
-        public List<Character_Item> Items { get; set; } = new();
+        [ValidateNever] //!!!
+        public List<Item> Items { get; set; } = new();
 
 
 

@@ -1,18 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
-using ApplicationCore.Models.EntitiesRelations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using VTT.Data;
 
-namespace ApplicationCore.Models.Entities
+
+namespace VTT.Data.Entities
 {
     public class User : EntityBase
     {
-        public User(string login, string password, bool isAdmin)
+        public User(string login, string password)
         {
             this.login = login;
             this.password = password;
-            this.isAdmin = isAdmin;
         }
 
         [Required]
@@ -26,11 +24,14 @@ namespace ApplicationCore.Models.Entities
         public string password { get; set; }
 
         [HiddenInput]
-        public bool isAdmin { get; set; }
+        public bool isAdmin { get; set; } = false;
 
         // --- Relationships ---
         [Required]
-        public List<User_World> Users_Worlds_Characters { get; set; } = new();
+        public List<World> Worlds { get; set; } = new();
 
+
+        public void AddWorld(World world)
+            => Worlds.Add(world);
     }
 }

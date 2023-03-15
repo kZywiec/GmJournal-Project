@@ -1,12 +1,17 @@
-﻿using ApplicationCore.Models.EntitiesRelations;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
+using VTT.Data;
 
-namespace ApplicationCore.Models.Entities
+namespace VTT.Data.Entities
 {
-    public class Item : EntityBaseWithName
+    public class Item : EntityBase
     {
         // --- ATTRIBIUTES ---
+
+        [StringLength(50)]
+        [Display(Name = "Name")]
+        [Required(ErrorMessage = "Name is required.")]
+        public string Name { get; set; }
 
         ///<summary> 
         ///Describes how many items character chawe in inventory. 
@@ -39,34 +44,51 @@ namespace ApplicationCore.Models.Entities
         ///<summary> 
         ///Helps to manage items. 
         ///</summary>
-        [Display(Name = "Type ID")]
-        [Required(ErrorMessage = "Type ID is required.")]
-        public int type_id { get; set; }
+        [Display(Name = "Type")]
+        [Required(ErrorMessage = "Type is required.")]
 
-        [ValidateNever] //!!!
-        public Item_Type type { get; set; }
+        public Item_Type Type { get; set; }
 
         ///<summary> 
         ///Availability describes how easy it is to find a item in shops or how often should be encountered in combat. 
         ///</summary>
-        [Display(Name = "Availability ID")]
-        [Required(ErrorMessage = "Availability ID is required.")]
-        public int availability_id { get; set; }
-
-        [ValidateNever] //!!!
-        public Item_Availability availability { get; set; }
+        [Display(Name = "Availability")]
+        [Required(ErrorMessage = "Availability is required.")]
+        public Item_Availability Availability { get; set; }
 
         ///<summary> 
         ///Concealment describes where you can hide a item. 
         ///</summary>
-        [Display(Name = "Concealment ID")]
-        [Required(ErrorMessage = "Concealment ID is required.")]
-        public int concealment_id { get; set; }
-
-        [ValidateNever]  //!!!
+        [Display(Name = "Concealment")]
+        [Required(ErrorMessage = "Concealment is required.")]
         public Item_Concealment concealment { get; set; }
+    }
+    public enum Item_Type
+    {
+        Armor,
+        Clothing,
+        Component,
+        Container,
+        Consumable,
+        General,
+        Mount,
+        Tool_Kit,
+        Weapon
+    }
 
-        [ValidateNever] //!!!
-        public Character_Item Character_Item { get; set; }
+    public enum Item_Availability
+    {
+        Everywhere,
+        Common,
+        Poor,
+        Rare
+    }
+
+    public enum Item_Concealment
+    {
+        Tiny,
+        Small,
+        Large,
+        Cant_Hide
     }
 }
