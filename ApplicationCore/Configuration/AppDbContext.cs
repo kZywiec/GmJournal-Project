@@ -1,21 +1,21 @@
-﻿using VTT.Data.Entities;
+﻿using GmJournal.Data.Entities;
 using Microsoft.EntityFrameworkCore;
-namespace VTT.Data.Configuration
+namespace GmJournal.Data.Configuration
 {
-    internal class VTTDbContext : DbContext
+    public class GmJournalDbContext : DbContext
     {
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<World> Worlds { get; set; }
         public virtual DbSet<Character> Characters{ get; set; }
         public virtual DbSet<Item> Items { get; set; }
 
-        public VTTDbContext(DbContextOptions<VTTDbContext> options) : base(options)
+        public GmJournalDbContext(DbContextOptions<GmJournalDbContext> options) : base(options)
         {
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=VTT.db");
+            optionsBuilder.UseSqlite("Data Source=GmJournal.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

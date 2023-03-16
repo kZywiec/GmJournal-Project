@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
-using VTT.Data;
+using GmJournal.Data;
 
-namespace VTT.Data.Entities
+namespace GmJournal.Data.Entities
 {
     public class World : EntityBase
     {

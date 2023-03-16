@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace VTT.Data
+namespace GmJournal.Data
 {
     public abstract class EntityBase
     {

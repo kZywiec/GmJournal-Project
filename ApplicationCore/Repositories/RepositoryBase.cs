@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using VTT.Data.Configuration;
+using GmJournal.Data.Configuration;
 
-namespace VTT.Data.Repositories
+namespace GmJournal.Data.Repositories
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityBase
     {
-        private readonly VTTDbContext _dbContext;
+        private readonly GmJournalDbContext _dbContext;
         private readonly DbSet<TEntity> _dbSet;
 
-        public RepositoryBase(VTTDbContext dbContext)
+        public RepositoryBase(GmJournalDbContext dbContext)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             _dbSet = dbContext.Set<TEntity>();

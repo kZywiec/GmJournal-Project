@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using VTT.Data;
+using GmJournal.Data;
 
-namespace VTT.Data.Entities
+namespace GmJournal.Data.Entities
 {
     public class Character : EntityBase
     {

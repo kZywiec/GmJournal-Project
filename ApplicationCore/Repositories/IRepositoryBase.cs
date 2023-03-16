@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VTT.Data.Repositories
+namespace GmJournal.Data.Repositories
 {
     public interface IRepositoryBase<TEntity> where TEntity : EntityBase
     {
