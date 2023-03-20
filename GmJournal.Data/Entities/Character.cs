@@ -9,15 +9,13 @@ namespace GmJournal.Data.Entities
     public class Character : EntityBase
     {
         public Character(
-            User user, World world, string name, 
+            string name, 
             string sex, int age, string race, 
             string social_standing, string homeland, 
             int intelligence, int reflex, int dexterity, 
             int body, int speed, int empathy, int craft, 
             int will, int luck)
         {
-            this.Owner = user;
-            this.World = world;
             this.name = name;
             this.sex = sex;
             this.age = age;

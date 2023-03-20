@@ -6,19 +6,17 @@ namespace GmJournal.Data.Entities
 {
     public class World : EntityBase
     {
-        public World(string name, DateTime nextSessionDate, User creator)
+        public World(string name, DateTime nextSessionDate)
         {
             this.Name = name;
-            this.Owner = creator;
             this.NextSessionDate = nextSessionDate;
             this.Users.Add(this.Owner);
         }
 
-        public World(string name,string description, DateTime nextSessionDate, User creator)
+        public World(string name,string description, DateTime nextSessionDate)
         {
             this.Name = name;
             this.Description = description;
-            this.Owner = creator;
             this.NextSessionDate = nextSessionDate;
             this.Users.Add(this.Owner);
         }
