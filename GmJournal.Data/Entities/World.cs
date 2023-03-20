@@ -10,7 +10,10 @@ namespace GmJournal.Data.Entities
         {
             this.Name = name;
             this.NextSessionDate = nextSessionDate;
-            this.Users.Add(this.Owner);
+            if (Owner != null)
+                this.Users.Add(this.Owner);
+            else
+                throw new Exception("Owner not found");
         }
 
         public World(string name,string description, DateTime nextSessionDate)
@@ -18,7 +21,10 @@ namespace GmJournal.Data.Entities
             this.Name = name;
             this.Description = description;
             this.NextSessionDate = nextSessionDate;
-            this.Users.Add(this.Owner);
+            if (Owner != null)
+                this.Users.Add(this.Owner);
+            else
+                throw new Exception("Owner not found");
         }
 
         [StringLength(50)]
