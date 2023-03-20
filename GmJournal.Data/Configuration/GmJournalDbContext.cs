@@ -20,6 +20,10 @@ namespace GmJournal.Data.Configuration
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+
+            //Relations for User entity
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Worlds)
                 .WithOne(w => w.Owner);
@@ -29,7 +33,7 @@ namespace GmJournal.Data.Configuration
                 .WithOne(w => w.Owner);
 
 
-
+            //Relations for World entity
             modelBuilder.Entity<World>()
                 .HasMany(w => w.Users)
                 .WithMany();
@@ -39,15 +43,24 @@ namespace GmJournal.Data.Configuration
                 .WithOne(c => c.World);
 
 
+            //Relations for Character entity
+            modelBuilder.Entity<Character>()
+                .HasMany(c => c.Items)
+                .WithOne(i => i.Owner);
 
             modelBuilder.Entity<Character>()
                 .HasOne(c => c.Owner)
-                .WithMany(u => u.Characters);
+                .WithMany();
 
             modelBuilder.Entity<Character>()
                 .HasOne(c => c.World)
-                .WithMany(w => w.Characters);
-        }
+                .WithMany();
 
+
+            //Relations for Item entity
+            modelBuilder.Entity<Item>()
+                .HasOne(i => i.Owner)
+                .WithMany();
+        }
     }
 }
