@@ -1,5 +1,7 @@
 ﻿using GmJournal.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
+
 namespace GmJournal.Data.Configuration
 {
     public class GmJournalDbContext : DbContext
@@ -11,7 +13,7 @@ namespace GmJournal.Data.Configuration
 
         public GmJournalDbContext(DbContextOptions<GmJournalDbContext> options) : base(options)
         {
-        }
+        } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
