@@ -1,6 +1,5 @@
 using GmJournal.Data.Configuration;
-using GmJournal.Data.Entities;
-using Microsoft.EntityFrameworkCore;
+using GmJournal.Logic.Services.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,11 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Add GmJournalDbContext to the services and configure it.
-builder.Services.AddDbContext<GmJournalDbContext>(options =>
-    options.UseSqlite("Data Source=GmJournal.db"));
+builder.Services.AddDbContext<GmJournalDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add UserAccessService
+builder.Services.AddSingleton<IUserAccessService, UserAccessService>();
 
 // Building app
 var app = builder.Build();

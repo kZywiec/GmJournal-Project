@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using GmJournal.Data.Configuration;
+using System.Linq.Expressions;
 
 namespace GmJournal.Data.Repositories
 {
@@ -15,6 +16,17 @@ namespace GmJournal.Data.Repositories
         }
 
 
+
+        public async virtual Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            var entities = await _dbContext
+                .Set<TEntity>()
+                .AsQueryable()
+                .Where(predicate)
+                .ToListAsync();
+
+            return entities;
+        }
 
         public async virtual Task<bool> ExistsByIdAsync(long id)
         {
