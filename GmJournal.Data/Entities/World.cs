@@ -6,6 +6,10 @@ namespace GmJournal.Data.Entities
 {
     public class World : EntityBase
     {
+
+        public World()
+        {
+        }
         public World(string name, DateTime nextSessionDate)
         {
             this.Name = name;
@@ -44,9 +48,11 @@ namespace GmJournal.Data.Entities
         [HiddenInput]
         public User Owner { get; set; }
 
+        [Required]
         [HiddenInput]
         public List<User> Users { get; set; } = new();
 
+        [Required]
         [HiddenInput]
         public List<Character> Characters { get; set; } = new();
     }

@@ -3,11 +3,16 @@ using System.ComponentModel.DataAnnotations;
 
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using GmJournal.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GmJournal.Data.Entities
 {
     public class Character : EntityBase
     {
+        public Character() 
+        {
+        }
+
         public Character(
             string name, 
             string sex, int age, string race, 
@@ -34,9 +39,13 @@ namespace GmJournal.Data.Entities
             this.CalculateStats();
         }
         //the user the character belongs to
+        [Required]
+        [HiddenInput]
         public User Owner { get; set; }
 
         //the world the character live in
+        [Required] 
+        [HiddenInput]
         public World World { get; set; }
 
 
@@ -116,32 +125,40 @@ namespace GmJournal.Data.Entities
         public int luck { get; set; }
 
         // Statistics
-        [Required]
+
         //[Range(10, 150, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+        [Required]
+        [HiddenInput]
         public int hp { get; set; }
 
-        [Required]
         //[Range(6, 90, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+        [Required]
+        [HiddenInput]
         public int run { get; set; }
 
-        [Required]
         //[Range(1, 150, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+        [Required]
+        [HiddenInput]
         public int leap { get; set; }
 
-        [Required]
         //[Range(20, 300, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+        [Required]
+        [HiddenInput]
         public int stun { get; set; }
 
-        [Required]
         //[Range(10, 150, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+        [Required]
+        [HiddenInput]
         public int stamina { get; set; }
 
-        [Required]
         //[Range(2, 30, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+        [Required]
+        [HiddenInput]
         public int recovery { get; set; }
 
-        [Required]
         //[Range(20, 300, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+        [Required]
+        [HiddenInput]
         public int encumbrance { get; set; }
 
 

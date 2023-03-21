@@ -7,6 +7,10 @@ namespace GmJournal.Data.Entities
 {
     public class User : EntityBase
     {
+        public User() 
+        { 
+        }
+
         public User(string login, string password)
         {
             this.login = login;
@@ -23,13 +27,15 @@ namespace GmJournal.Data.Entities
         [StringLength(16, ErrorMessage = "Password length must be between {2} and {1}.", MinimumLength = 5)]
         public string password { get; set; }
 
-        [HiddenInput]
+        [Required]
         public bool isAdmin { get; set; } = false;
 
         // --- Relationships ---
         [Required]
+        [HiddenInput]
         public List<World> Worlds { get; set; } = new();
-        
+
+        [Required]
         [HiddenInput]
         public List<Character> Characters { get; set; } = new();
 

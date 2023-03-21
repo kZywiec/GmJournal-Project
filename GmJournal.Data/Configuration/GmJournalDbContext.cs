@@ -11,10 +11,6 @@ namespace GmJournal.Data.Configuration
         public virtual DbSet<Character> Characters{ get; set; }
         public virtual DbSet<Item> Items { get; set; }
 
-        public GmJournalDbContext(DbContextOptions<GmJournalDbContext> options) : base(options)
-        {
-        } 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=GmJournal.db");

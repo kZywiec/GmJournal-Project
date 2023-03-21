@@ -1,11 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 using GmJournal.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GmJournal.Data.Entities
 {
     public class Item : EntityBase
     {
+
+        public Item()
+        {
+        }
+
         public Item(
             string name, int quantity, 
             float weight, int cost, string description, 
@@ -23,6 +29,7 @@ namespace GmJournal.Data.Entities
         }
 
         //the character the item belongs to
+        [Required]
         public Character Owner { get; set; }
 
         [StringLength(50)]
