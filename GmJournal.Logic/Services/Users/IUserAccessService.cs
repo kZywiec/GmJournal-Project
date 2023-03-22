@@ -7,13 +7,15 @@ namespace GmJournal.Logic.Services.Users
         Task<bool> UserExists(string login);
         Task<bool> UserExistsById(long id);
 
-        Task LoginAsync (string login, string password);
+        Task<bool> LoginAsync(User user);
+        Task<bool> LoginAsync (string login, string password);
 
-        Task RegisterAsync(string login, string password);
+        Task<bool> RegisterAsync(User user);
+        Task<bool> RegisterAsync(string login, string password);
 
         bool IsUserLogged();
         void Logout();
 
-        public User LoggedUser { get; }
+        public User? LoggedUser { get; }
     }
 }

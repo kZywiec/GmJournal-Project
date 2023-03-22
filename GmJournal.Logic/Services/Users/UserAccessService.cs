@@ -10,11 +10,16 @@ namespace GmJournal.Logic.Services.Users
         private readonly IRepositoryBase<User> _repository;
         public User? LoggedUser { get; set; }
 
+        public UserAccessService(IRepositoryBase<User> repository)
+        {
+            _repository = repository;
+        }   
+
         public bool IsUserLogged()
             => LoggedUser != null;
 
         public bool IsUserAdmin()
-            => IsUserLogged() ?
+            => LoggedUser != null ?
                 LoggedUser.isAdmin :
                 throw new Exception("User not logged");
 
@@ -30,23 +35,55 @@ namespace GmJournal.Logic.Services.Users
             return userFound.Any();
         }
 
-        public Task LoginAsync(string login, string password)
+        public async Task<bool> LoginAsync(User user)
         {
-            throw new NotImplementedException();
+            var usersFound = await _repository.FindAsync(u => u.login == user.login && u.password == user.password);
+            bool userExists = usersFound.Any();
+
+            if (!userExists)
+                throw new Exception("Incorrect interaction data!");
+
+            LoggedUser = usersFound.First();
+            return userExists;
         }
 
-        public async Task RegisterAsync(string login, string password)
+        public async Task<bool> LoginAsync(string login, string password)
         {
-            User newUser = new User(login, password);
+            var usersFound = await _repository.FindAsync(u => u.login == login && u.password == password);
+            bool userExists = usersFound.Any();
 
-            if (await UserExists(newUser.login))
+            if (!userExists)
+                throw new Exception("Błędne dane logowania!");
+
+            LoggedUser = usersFound.First();
+            return userExists;
+        }
+
+        public async Task<bool> RegisterAsync(User user)
+        {
+            if (user.login != null && await UserExists(user.login))
             {
-                throw new Exception($"User {newUser.login} already exist.");
+                throw new Exception($"User {user.login} already exist.");
             }
             else
             {
+                await _repository.AddAsync(user);
+                await _repository.SaveChangesAsync();
+                return true;
+            }
+        }
+        public async Task<bool> RegisterAsync(string login, string password)
+        {
+            if (await UserExists(login))
+            {
+                throw new Exception($"User {login} already exist.");
+            }
+            else
+            {
+                User newUser = new(login, password);
                 await _repository.AddAsync(newUser);
                 await _repository.SaveChangesAsync();
+                return true;
             }
         }
     }

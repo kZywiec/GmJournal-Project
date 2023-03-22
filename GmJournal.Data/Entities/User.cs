@@ -19,13 +19,13 @@ namespace GmJournal.Data.Entities
 
         [Required]
         [Display(Name = "Login")]
-        [StringLength(20, ErrorMessage = "Login Can't be longer than 20 character.")]
-        public string login { get; set; }
+        [StringLength(20, ErrorMessage = "Login length must be between {2} and {1}.", MinimumLength = 5)]
+        public string? login { get; set; }
 
         [Required]
         [Display(Name = "Password")]
         [StringLength(16, ErrorMessage = "Password length must be between {2} and {1}.", MinimumLength = 5)]
-        public string password { get; set; }
+        public string? password { get; set; }
 
         [Required]
         public bool isAdmin { get; set; } = false;
