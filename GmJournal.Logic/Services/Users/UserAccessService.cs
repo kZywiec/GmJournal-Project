@@ -69,20 +69,7 @@ namespace GmJournal.Logic.Services.Users
             {
                 await _repository.AddAsync(user);
                 await _repository.SaveChangesAsync();
-                return true;
-            }
-        }
-        public async Task<bool> RegisterAsync(string login, string password)
-        {
-            if (await UserExists(login))
-            {
-                throw new Exception($"User {login} already exist.");
-            }
-            else
-            {
-                User newUser = new(login, password);
-                await _repository.AddAsync(newUser);
-                await _repository.SaveChangesAsync();
+                LoggedUser = user;
                 return true;
             }
         }

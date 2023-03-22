@@ -11,7 +11,6 @@ namespace GmJournal.Logic.Services.Users
         Task<bool> LoginAsync (string login, string password);
 
         Task<bool> RegisterAsync(User user);
-        Task<bool> RegisterAsync(string login, string password);
 
         bool IsUserLogged();
         void Logout();

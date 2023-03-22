@@ -25,6 +25,27 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
+                        </li>
+                        @if (ViewData["CurrentUser"] != null)
+                        {
+                            <li class="nav-item">
+                                <div>
+                                    <p>@ViewData["CurrentUser.name"]</p>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Access" asp-action="Logout">LogOut</a>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Access" asp-action="Login">LogIn</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Access" asp-action="Register">SignIn</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

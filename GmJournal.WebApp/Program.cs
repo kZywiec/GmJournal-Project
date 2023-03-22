@@ -1,4 +1,6 @@
 using GmJournal.Data.Configuration;
+using GmJournal.Data.Entities;
+using GmJournal.Data.Repositories;
 using GmJournal.Logic.Services.Users;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,10 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Add GmJournalDbContext to the services and configure it.
-builder.Services.AddDbContext<GmJournalDbContext>();
+builder.Services.AddDbContext<GmJournalDbContext>(ServiceLifetime.Singleton);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<IRepositoryBase<User>, RepositoryBase<User>>();
 
 // Add UserAccessService
 builder.Services.AddSingleton<IUserAccessService, UserAccessService>();

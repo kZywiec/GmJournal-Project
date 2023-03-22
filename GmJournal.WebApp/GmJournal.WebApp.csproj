@@ -20,8 +20,4 @@
     <ProjectReference Include="..\GmJournal.Logic\GmJournal.Logic.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Access\" />
-  </ItemGroup>
-
 </Project>
