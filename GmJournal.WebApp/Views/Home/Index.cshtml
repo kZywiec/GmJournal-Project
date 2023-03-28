@@ -2,7 +2,65 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<article class="text-center">
+    @if (ViewData["CurrentUser"] != null)
+    {
+            <h3 class="text-center">Game Master @ViewData["CurrentUser.name"]</h3>
+    }
+    <h1 class="display-4 first">Welcome to GM Journal!</h1>
+    <p> We're a team of RPG enthusiasts who love helping fans create amazing experiences.</p>
+    <p> Whether you're a seasoned player or just starting out, we're here to support you every step of the way.</p>
+    <p> Check back often for new features and content, and feel free to reach out to us with any questions or suggestions.</p>
+</article>
+
+<div class="Gallery">
+
+    <img class="Gallery-item" src="~/pic/world3.png"/>
+
+    <img class="Gallery-item" src="~/pic/character2.png" style="background-color:rgbrgb(30,30,30)" />
+    
+    <img class="Gallery-item" src="~/pic/item1.png" />
+</div>
+
+<div class="infobox">
+
+    <div class="carusele">
+        <img class="Gallery-item" src="~/pic/world5.png" />
+    </div>
+
+    <div class="iBox">
+        <h2 class="text-center">
+            Create and menage you own fantasy worlds</h2>
+    
+        <p>With this option, you can let your imagination run wild and create your very own unique and captivating fantasy world. Whether you're a seasoned writer or a beginner, our user-friendly interface makes it easy for you to build and manage every aspect of your world.</p>
+        <p>From geography to history, magic systems to religions, the possibilities are endless. You can customize every detail to fit your vision, and add your own characters, creatures, and stories to bring your world to life. Our tool offers a wide range of features to help you create and manage your world, including maps, timelines, and a host of other helpful tools to help you flesh out your ideas.</p>
+        <p>You have the power to create a fully-realized world that's entirely your own. So what are you waiting for? Start creating your dream world today!</p>
+    </div>
+</div>
+
+<div class="infobox">
+    <div class="iBox">
+        <h2 class="text-center">
+            Bring the heroes to live</h2>
+        <p>You can take your favorite characters from your favorite fantasy worlds and bring them to life in your very own RPG campaign. Our user-friendly interface makes it easy for you to create, manage, and customize every aspect of your characters' stats, relationships, and history.</p>
+        <p>Whether you're a seasoned RPG player or just starting out, our tool offers a wide range of features to help you bring your heroes to life. From managing their stats and abilities to customizing their character cards, you have full control over your characters' development and progress. You can also track their relationships and history to make sure they stay true to their original story and character traits.</p>
+        <p>You can take your favorite characters and make them your own, exploring their full potential in your RPG campaign. So what are you waiting for? Start bringing your heroes to life today and see where the adventure takes you!</p>
+    </div>
+    <div class="carusele">
+        <img class="Gallery-item" src="~/pic/character1.png" style="background-color:rgbrgb(30,30,30)" />
+    </div>
+</div>
+
+<div class="infobox">
+    <div class="carusele">
+        <img class="Gallery-item" src="~/pic/item2.png" />
+    </div>
+
+    <div class="iBox">
+        <h2 class="text-center">
+            Arm them with artifacts of glory and chaos</h2>
+        <p>You can create powerful and unique artifacts to equip your characters with in your RPG campaign. Our user-friendly interface makes it easy for you to design and manage every aspect of your artifacts, from their appearance to their stats and abilities.</p>
+        <p>Whether you're looking to create weapons of mass destruction or tools of healing and protection, our tool offers a wide range of features to help you bring your artifacts to life. You can also manage your characters' inventory and equip them with the artifacts you create, ensuring they have the right tools for every situation.</p>
+        <p>You have full control over the development and progression of your characters and their equipment. So what are you waiting for? Start creating and managing your artifacts today and see how they can help your characters conquer the challenges ahead!</p>
+    </div>
 </div>

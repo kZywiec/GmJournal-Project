@@ -1,0 +1,217 @@
+/* Set the background color and font for the entire page */
+body {
+    background-color: rgb(0,0,0);
+    font-family: Morpheus;
+    background-image: url('../pic/bg-paper.png');
+    --dark-border-color: rgb(30,30,30);
+}
+
+p{font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif}
+/* Style the footer element */
+footer {
+    background-color: rgb(30,30,30);
+}
+
+
+h1 {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient( to top, black,#A50905, #A50905);
+}
+article:first-of-type {
+    margin-top: 100px;
+    color: rgb(231,225,212);
+    text-shadow: black 0.1em 0.1em 0.2em
+}
+
+/* Define some custom CSS variables for the navbar */
+.navi-dark {
+    --navbar-background-color: rgba(36, 37, 38, 0.8);
+    --navbar-background-color-no-blur: rgba(36, 37, 38, 0.95);
+    --navbar-menu-background-color: #18191B;
+    --navbar-button-color-primary: #A50905;
+    --navbar-button-color-primary-hover: #DD0707;
+    --navbar-button-color-secondary: #42312C;
+    --navbar-button-color-secondary-hover: #594A3F;
+    --navbar-content-color-primary: rgb(237,237,237);
+}
+
+/* Style the navbar */
+.navbar {
+    position: fixed;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 94vw;
+    height: 50px;
+    max-width: 2556px;
+    margin: 25px 20px 25px 20px;
+    background-color: rgb(30,30,30);
+    border: 1px solid;
+    border-color: var(--dark-border-color);
+    border-radius: 8px;
+}
+
+/* Style the left section of the navbar */
+.navbar-peace {
+    width: 45%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Style the center section of the navbar */
+.navbar-left {
+    flex-grow: 2;
+    justify-content: left;
+}
+
+/* Style the center section of the navbar */
+.navbar-center {
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: center;
+}
+
+/* Style the right section of the navbar */
+.navbar-right {
+    flex-grow: 2;
+    justify-content: left;
+}
+
+/* Style the links in the navbar */
+.nav-link {
+    width:fit-content;
+    margin: auto;
+    height: fit-content;
+    padding: 0;
+    color: var(--navbar-content-color-primary);
+}
+
+    /* Style the hover effect for the links in the navbar */
+    .nav-link:hover {
+        color: var(--navbar-button-color-primary);
+    }
+
+/* Style the content of the links in the navbar */
+.nav-link-content {
+    align-items: center;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: flex;
+    min-height: 50%;
+    overflow: hidden;
+    text-align: left;
+    transition: var(--transition-hover);
+}
+
+/* Style the logo in the navbar */
+.navbar-logo {
+    height: 90px;
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+
+/* Style the register button in the navbar */
+#register-nav-button {
+    padding: 1%;
+    border-radius: 8px;
+    background-color: var(--navbar-button-color-primary);
+}
+    #register-nav-button:hover {
+        color: var(--navbar-content-color-primary);
+        background-color: var(--navbar-button-color-primary-hover);
+    }
+
+/* Style the image and text combo */
+.image-with-text {
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: var(--dark-border-color);
+    background-color: rgb(231,225,212);
+}
+
+    /* Style the image within the image and text combo */
+    .image-with-text img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    /* Style the text within the image and text combo */
+    .image-with-text p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        vertical-align: middle;
+        font-size: 22px;
+        font-weight: bold;
+        color: white;
+        font-family: Morpheus;
+    }
+
+/* Add rotation animation to image on hover */
+.image-with-text-rotate:hover img {
+    animation: rotation 3s infinite linear;
+}
+
+/* Define rotation animation */
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+/* Style the gallery container */
+.Gallery {
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    border: 2px solid;
+    border-radius: 8px;
+    border-color: var(--dark-border-color);
+    padding: 10px 0px 10px 0px;
+    margin: 2vh;
+    background-color: rgb(30,30,30);
+}
+
+/* Style the gallery items */
+.Gallery-item {
+    width: 20vw;
+    max-width: 375px;
+    border-radius: 8px;
+    margin: 10px;
+    background-color: black;
+}
+
+
+.infobox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 100px 10px;
+    justify-content:space-between;
+}
+/* Style the iBox element */
+.iBox {
+    background-color: rgb(231,225,212);
+    padding: 5px;
+    border: 2px solid;
+    border-color: var(--dark-border-color);
+    border-radius: 8px;
+    margin: 10px;
+}
+carusele{
+    
+}
