@@ -16,16 +16,13 @@ namespace GmJournal.Data.Entities
             this.CalculateStats();
         }
 
-        public Character(characterModel characterModel,ref User owner,ref World world)
+        public Character(characterModel characterModel, User owner, World world)
         {
             this.World = world;
             this.Owner = owner;
 
             this.Edit(characterModel);
             this.CalculateStats();
-
-            world.Characters.Add(this);
-            owner.Characters.Add(this);
         }
         //the user the character belongs to
         [Required]

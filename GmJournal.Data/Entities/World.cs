@@ -12,12 +12,11 @@ namespace GmJournal.Data.Entities
     {
 
         public World() : base() { }
-        public World(worldModel worldModel, ref User owner)
+        public World(worldModel worldModel, User owner)
         {
             this.Owner = owner;
             this.Edit(worldModel);
             this.AddUser(owner);
-            owner.AddWorld(this);
         }
 
         [Required]

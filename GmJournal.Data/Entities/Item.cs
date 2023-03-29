@@ -13,9 +13,10 @@ namespace GmJournal.Data.Entities
         {
         }
 
-        public Item(itemModel itemModel, ref User owner)
+        public Item(itemModel itemModel, Character owner)
         {
-
+            owner = owner ?? throw new ArgumentNullException(nameof(owner));
+            Edit(itemModel);
         }
 
         //the character the item belongs to

@@ -99,4 +99,3 @@ namespace GmJournal.Data.ViewModels
         Cant_Hide
     }
 }
-}
