@@ -17,9 +17,9 @@ namespace GmJournal.WebApp.Controllers
         {
             _context = context;
             _userAccessService = userAccessService;
-            
-            if(userAccessService.LoggedUser != null)
-                _LoggedUser = userAccessService.LoggedUser;
+            _LoggedUser = userAccessService.LoggedUser ??
+            throw new ArgumentNullException(nameof(userAccessService.LoggedUser), "You need to Login.");
+
         }
 
         // GET: Worlds
@@ -117,7 +117,11 @@ namespace GmJournal.WebApp.Controllers
             {
                 try
                 {
-                    World world = await _context.Worlds.FindAsync(id);
+                    World? world = await _context.Worlds.FindAsync(id);
+
+                    if(world == null)
+                        return NotFound();
+
                     world.Edit(worldModel);
                     _context.Entry(world).State = EntityState.Modified;
                     

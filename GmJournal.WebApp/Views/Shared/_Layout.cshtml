@@ -43,10 +43,8 @@
                     </div>
 
                     <div class="navbar-peace navbar-right">
-                        @if ( @_userAccessService.IsUserLogged())
+                        @if (@_userAccessService.LoggedUser != null)
                         {
-                            
-
                             <a class="nav-link" asp-area="" asp-controller="Access" asp-action="Logout">
                                 <div class="nav-link-content">
                                     @_userAccessService.LoggedUser.login
