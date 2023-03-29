@@ -1,0 +1,36 @@
+﻿@model IEnumerable<GmJournal.Data.Entities.World>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Worlds</h1>
+
+
+<div class='container'>
+    <div class='center list flex-column'>
+
+        @foreach (var item in Model) {
+            <div class='card flex-row open'>
+                <img src='./pic/world1.jpg' class='book'>
+                <div class='flex-column info'>
+                    <div class='title'>@Html.DisplayFor(modelItem => item.Name)</div>
+                    <div class='creation-date'>@Html.DisplayFor(modelItem => item.CreationDate)</div>
+                    <div class='summary'>@Html.DisplayFor(modelItem => item.Description)</div>
+                    <div class='next-session-date'>@Html.DisplayFor(modelItem => item.NextSessionDate)</div>
+                </div>
+                <div class='flex-column group'>
+                    <div class='hidden bottom'>
+                         <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                         <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                         <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </div>
+                </div>
+            </div>
+}
+        <p><a asp-action="Create">Create New</a></p>
+    </div>
+</div>
+
+
+
