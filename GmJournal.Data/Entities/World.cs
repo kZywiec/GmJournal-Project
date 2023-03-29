@@ -1,48 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using GmJournal.Data;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using GmJournal.Data.ViewModels;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace GmJournal.Data.Entities
 {
-    public class World : EntityBase
+    public class World : worldModel
     {
 
-        public World()
+        public World() : base() { }
+        public World(worldModel worldModel, ref User owner)
         {
+            this.Owner = owner;
+            this.Edit(worldModel);
+            this.AddUser(owner);
+            owner.AddWorld(this);
         }
-        public World(string name, DateTime nextSessionDate)
-        {
-            this.Name = name;
-            this.NextSessionDate = nextSessionDate;
-            if (Owner != null)
-                this.Users.Add(this.Owner);
-            else
-                throw new Exception("Owner not found");
-        }
-
-        public World(string name,string description, DateTime nextSessionDate)
-        {
-            this.Name = name;
-            this.Description = description;
-            this.NextSessionDate = nextSessionDate;
-            if (Owner != null)
-                this.Users.Add(this.Owner);
-            else
-                throw new Exception("Owner not found");
-        }
-
-        [StringLength(50)]
-        [Display(Name = "Name")]
-        [Required(ErrorMessage = "Name is required.")]
-        public string Name { get; set; }
-
-        [Required]
-        public string Description { get; set; } = "";
-
-        [Required(ErrorMessage = "Enter date of next sesion")]
-
-        [DataType(DataType.DateTime)]
-        public DateTime NextSessionDate { get; set; }
 
         [Required]
         [HiddenInput]
@@ -55,5 +31,21 @@ namespace GmJournal.Data.Entities
         [Required]
         [HiddenInput]
         public List<Character> Characters { get; set; } = new();
+
+        public void SetOwner(User user)
+        {
+            this.Owner = user;
+            AddUser(user);
+        }
+
+        public void AddUser(User user)
+            => Users.Add(user);
+
+        public void Edit(worldModel worldModel)
+        {
+            this.Name = worldModel.Name;
+            this.Description = worldModel.Description;
+            this.NextSessionDate = worldModel.NextSessionDate;
+        }
     }
 }
