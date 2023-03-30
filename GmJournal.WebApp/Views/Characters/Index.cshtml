@@ -1,0 +1,167 @@
+﻿@model IEnumerable<GmJournal.Data.Entities.Character>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.hp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.run)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.leap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stun)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stamina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.recovery)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.encumbrance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.race)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.social_standing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.homeland)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.intelligence)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reflex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dexterity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.body)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.speed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empathy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.craft)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.will)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.luck)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.hp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.run)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.leap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stun)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stamina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.recovery)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.encumbrance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.race)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.social_standing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.homeland)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.intelligence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reflex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dexterity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.speed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.empathy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.craft)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.will)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.luck)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                <a asp-controller="Character" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-controller="Character" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-controller="Character" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
