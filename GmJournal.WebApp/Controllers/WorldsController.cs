@@ -11,15 +11,15 @@ namespace GmJournal.WebApp.Controllers
     {
         private readonly GmJournalDbContext _context;
         private readonly IUserAccessService _userAccessService;
-        private User _LoggedUser;
+        private User? _LoggedUser;
 
         public WorldsController(GmJournalDbContext context, IUserAccessService userAccessService)
         {
             _context = context;
             _userAccessService = userAccessService;
-            _LoggedUser = userAccessService.LoggedUser ??
-            throw new ArgumentNullException(nameof(userAccessService.LoggedUser), "You need to Login.");
 
+            if (_userAccessService.LoggedUser != null)
+                _LoggedUser = _userAccessService.LoggedUser;
         }
 
         // GET: Worlds
