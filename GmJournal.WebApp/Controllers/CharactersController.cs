@@ -53,9 +53,9 @@ namespace GmJournal.WebApp.Controllers
             return View(character);
         }
 
-        // GET: Characters/Create
-        public IActionResult Create()
+        public async Task<IActionResult> CreateAsync(long worldId)
         {
+            ViewData["WorldId"] = worldId;
             return View();
         }
 
@@ -64,14 +64,18 @@ namespace GmJournal.WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("name,sex,age,race,social_standing,homeland,intelligence,reflex,dexterity,body,speed,empathy,craft,will,luck,Id,CreationDate")] characterModel characterModel)
+        public async Task<IActionResult> Create(characterModel characterModel, long worldId)
         {
+            World world = await _context.Worlds
+                            .FirstOrDefaultAsync(m => m.Id == worldId);
             if (ModelState.IsValid)
             {
-                _context.Add(new Character(characterModel,_LoggedUser, /*TEST, TO CHANGE*/ _LoggedUser.Worlds.FirstOrDefault()));
+                var character = new Character(characterModel, _LoggedUser, world);
+                _context.Add(character);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["WorldId"] = worldId;
             return View(characterModel);
         }
 

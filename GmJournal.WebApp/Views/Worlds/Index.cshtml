@@ -12,7 +12,7 @@
 
         @foreach (var item in Model) {
             <div class='card flex-row open'>
-                <img src='./pic/world1.jpg' class='book'>
+                <img src='./pic/world1.jpg' style='height:100px; width:100px;'>
                 <div class='flex-column info'>
                     <div class='title'>@Html.DisplayFor(modelItem => item.Name)</div>
                     <div class='creation-date'>@Html.DisplayFor(modelItem => item.CreationDate)</div>
@@ -26,6 +26,19 @@
                          <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     </div>
                 </div>
+            </div>
+            <div class='card flex-column open'>
+                    @foreach (var character in item.Characters)
+                    {
+                        <div>
+                            <p>@character.name;</p>
+                            <p>@character.race;</p>
+                            <a asp-controller="Characters" asp-action="Edit" asp-route-id="@character.Id">Edit</a> |
+                            <a asp-controller="Characters" asp-action="Details" asp-route-id="@character.Id">Details</a> |
+                            <a asp-controller="Characters" asp-action="Delete" asp-route-id="@character.Id">Delete</a>
+                        </div>
+                    }
+                    <a asp-controller="Characters" asp-route-worldId="@item.Id" asp-action="Create">Create New</a>
             </div>
 }
         <p><a asp-action="Create">Create New</a></p>
